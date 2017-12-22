@@ -1,0 +1,50 @@
+pinpoint-hbase:
+  container_name: pinpoint-hbase
+  hostname: hbase
+  image: goodrainapps/pinpoint-hbase:1.2.6
+  restart: always
+  expose:
+    - "2181"
+    - "16010"
+  ports:
+    - "2181:2181"
+    - "16010:16010"
+
+pinpoint-mysql:
+  container_name: pinpoint-mysql
+  restart: always
+  image: mysql:5.7
+  ports:
+    - "13306:3306"
+  environment:
+    - MYSQL_ROOT_PASSWORD=root123
+    - MYSQL_USER=admin
+    - MYSQL_PASSWORD=admin
+    - MYSQL_DATABASE=pinpoint
+
+pinpoint-collector:
+  container_name: pinpoint-collector
+  hostname: collector
+  image: goodrainapps/pinpoint-collector:1.7.0
+  restart: always
+  expose:
+    - "9994"
+    - "9995"
+    - "9996"
+  ports:
+    - "9994:9994"
+    - "9995:9995/tcp"
+    - "9996:9996/tcp"
+    - "9995:9995/udp"
+    - "9996:9996/udp"
+  environment:
+    HBASE_HOST: hbase
+    HBASE_PORT: 2181
+    COLLECTOR_TCP_PORT: 9994
+    COLLECTOR_UDP_STAT_LISTEN_PORT: 9995
+    COLLECTOR_UDP_SPAN_LISTEN_PORT: 9996
+    CLUSTER_ENABLE: 'true'
+    CLUSTER_ZOOKEEPER_ADDRESS: hbase
+    DISABLE_DEBUG: 'true'
+  links:
+    - pinpoint-hbase:hbase
