@@ -3,6 +3,7 @@
 [[ $DEBUG ]] && set -x 
 
 # touch log and tail it
+mkdir -pv $HBASE_PATH/logs
 touch $HBASE_PATH/logs/hbase--master-${HOSTNAME}.log
 tail -f $HBASE_PATH/logs/hbase--master-${HOSTNAME}.log &
 
