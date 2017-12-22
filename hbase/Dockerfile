@@ -5,7 +5,7 @@ ENV HBASE_PATH=/opt/hbase
 
 # install hbase
 RUN mkdir -pv $HBASE_PATH \
-    && curl -sk https://pkg.com/apps/hbase/hbase-1.2.6-bin.tar.gz | tar xz --strip-components=1 -C $HBASE_PATH
+    && curl -sk https://pkg.goodrain.com/apps/hbase/hbase-1.2.6-bin.tar.gz | tar xz --strip-components=1 -C $HBASE_PATH
 
 # prepare hbase config file
 COPY hbase-site.xml $HBASE_PATH/conf/hbase-site.xml
