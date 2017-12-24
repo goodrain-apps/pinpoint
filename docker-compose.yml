@@ -11,6 +11,8 @@ services:
     ports:
       - "2181:2181"
       - "16010:16010"
+    volumes:
+      - $PWD/hbase/data:/data
 
   pinpoint-mysql:
     container_name: pinpoint-mysql
