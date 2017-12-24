@@ -9,7 +9,7 @@ touch $HBASE_PATH/logs/hbase--master-${HOSTNAME}.log
 tail -f $HBASE_PATH/logs/hbase--master-${HOSTNAME}.log &
 
 
-if [ ! -f /data/.inited ];then
+if [ ! -f /data/.inited ] && [ "$1" != "bash" ];then
 
   # start hbase temporary
   $HBASE_PATH/bin/start-hbase.sh
@@ -37,4 +37,4 @@ if [ ! -f /data/.inited ];then
 fi
 
 # start hbase
-exec /opt/hbase/bin/hbase-daemon.sh --config /opt/hbase/bin/../conf foreground_start master
+exec $@

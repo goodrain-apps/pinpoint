@@ -2,7 +2,7 @@ FROM goodrainapps/tomcat:8.5.20-jre8-alpine
 
 ENV PINPOINT_VERSION=1.7.0
 ENV TOMCAT_PATH=/usr/local/tomcat
-RUN wget https://pkg.goodrain.com/apps/pinpoint/pinpoint-collector-${PINPOINT_VERSION}-SNAPSHOT.war -O /tmp/pinpoint-collector.zip \
+RUN wget -q https://pkg.goodrain.com/apps/pinpoint/pinpoint-collector-${PINPOINT_VERSION}-SNAPSHOT.war -O /tmp/pinpoint-collector.zip \
     && rm -rf ${TOMCAT_PATH}/webapps/ROOT/* \
     && sed -i -e 's/8005/9005/' \
               -e 's/8080/9080/' \
