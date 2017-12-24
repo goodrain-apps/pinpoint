@@ -1,4 +1,4 @@
-FROM goodrainapps/openjdk:7u131-jdk-alpine
+FROM goodrainapps/openjdk:8.5.20-jre8-alpine
 
 ENV HBASE_VERSION=1.2.6
 ENV HBASE_PATH=/opt/hbase
