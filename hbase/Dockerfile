@@ -16,7 +16,7 @@ COPY docker-entrypoint.sh /
 RUN chmod +x /docker-entrypoint.sh
 
 # copy hbase init scripts
-COPY init-hbase.txt $HBASE_PATH/conf/init-hbase.txt
+COPY hbase-create.hbase $HBASE_PATH/conf/hbase-create.hbase
 
 EXPOSE 2181 16010
 

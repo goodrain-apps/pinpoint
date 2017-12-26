@@ -21,7 +21,7 @@ if [ ! -f /data/.inited ] && [ "$1" != "bash" ];then
     echo "Waiting HBase start..."
     sleep 1
   done
-  $HBASE_PATH/bin/hbase shell $HBASE_PATH/conf/init-hbase.txt && echo "HBase init ok!" > /data/.inited
+  $HBASE_PATH/bin/hbase shell $HBASE_PATH/conf/hbase-create.hbase && echo "HBase init ok!" > /data/.inited
   
   # stop hbase
   $HBASE_PATH/bin/stop-hbase.sh 
