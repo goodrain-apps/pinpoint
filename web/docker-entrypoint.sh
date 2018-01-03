@@ -6,6 +6,7 @@ set -e
 CLUSTER_ENABLE=${CLUSTER_ENABLE:-false}
 CLUSTER_ZOOKEEPER_ADDRESS=${HBASE_HOST:-127.0.0.1}
 ADMIN_PASSWORD=${ADMIN_PASSWORD:-admin}
+SHOW_APP_STAT=${SHOW_APP_STAT:-true}
 
 HBASE_HOST=${HBASE_HOST:-127.0.0.1}
 HBASE_PORT=${HBASE_PORT:-2181}
@@ -28,6 +29,7 @@ jdbc.password=${JDBC_PASSWORD}
 
 sed -i -r -e "s/(cluster.enable)=true/\1=${CLUSTER_ENABLE}/g" \
           -e "s/(cluster.zookeeper.address)=localhost/\1=${CLUSTER_ZOOKEEPER_ADDRESS}/g" \
+          -e "s/(config.show.applicationStat)=.*/\1=${SHOW_APP_STAT}/" \
           -e "s/(admin.password)=admin/\1=${ADMIN_PASSWORD}/g" ${TOMCAT_PATH}/webapps/ROOT/WEB-INF/classes/pinpoint-web.properties
 
 sed -i -r -e "s/(hbase.client.host)=localhost/\1=${HBASE_HOST}/g" \

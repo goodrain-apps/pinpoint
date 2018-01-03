@@ -10,9 +10,6 @@ RUN wget -q https://pkg.goodrain.com/apps/pinpoint/pinpoint-web-${PINPOINT_VERSI
     && sed -i 's/googleapis.com/cat.net/' ${TOMCAT_PATH}/webapps/ROOT/components/tooltipster/doc/css/style.css \
     && rm -rf /tmp/pinpoint-web.zip
 
-COPY pinpoint-web.properties $TOMCAT_PATH/webapps/ROOT/WEB-INF/classes/pinpoint-web.properties
-COPY hbase.properties $TOMCAT_PATH/webapps/ROOT/WEB-INF/classes/hbase.properties
-
 COPY docker-entrypoint.sh /
 RUN chmod +x /docker-entrypoint.sh
 

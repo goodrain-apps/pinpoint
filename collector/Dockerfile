@@ -11,9 +11,6 @@ RUN wget -q https://pkg.goodrain.com/apps/pinpoint/pinpoint-collector-${PINPOINT
     && unzip /tmp/pinpoint-collector.zip -d ${TOMCAT_PATH}/webapps/ROOT/ \
     && rm -rf /tmp/pinpoint-collector.zip
 
-COPY pinpoint-collector.properties $TOMCAT_PATH/webapps/ROOT/WEB-INF/classes/pinpoint-collector.properties
-COPY hbase.properties $TOMCAT_PATH/webapps/ROOT/WEB-INF/classes/hbase.properties
-
 COPY docker-entrypoint.sh /
 RUN chmod +x /docker-entrypoint.sh
 
