@@ -1,8 +1,8 @@
 FROM goodrainapps/tomcat:8.5.20-jre8-alpine
 
-ENV PINPOINT_VERSION=1.7.0
+ENV PINPOINT_VERSION=1.7.2
 ENV TOMCAT_PATH=/usr/local/tomcat
-RUN wget -q https://pkg.goodrain.com/apps/pinpoint/pinpoint-web-${PINPOINT_VERSION}.war -O /tmp/pinpoint-web.zip \
+RUN wget -q https://pkg.goodrain.com/apps/pinpoint/pinpoint-web-${PINPOINT_VERSION}-SNAPSHOT.war -O /tmp/pinpoint-web.zip \
     && rm -rf ${TOMCAT_PATH}/webapps/ROOT/* \
     && unzip /tmp/pinpoint-web.zip -d ${TOMCAT_PATH}/webapps/ROOT/ \
     && sed -i '/google-analytics.js/d' ${TOMCAT_PATH}/webapps/ROOT/index.html \
