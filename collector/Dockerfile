@@ -14,6 +14,6 @@ RUN wget -q https://pkg.goodrain.com/apps/pinpoint/pinpoint-collector-${PINPOINT
 COPY docker-entrypoint.sh /
 RUN chmod +x /docker-entrypoint.sh
 
-EXPOSE 9996 9995 9996
+EXPOSE 9994 9995 9996
 
 ENTRYPOINT ["/docker-entrypoint.sh"]
